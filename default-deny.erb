@@ -1,17 +1,16 @@
-	# Don't log when robots or favicon is accessed or 404'd
-	location = /robots.txt  { access_log off; log_not_found off; }
-	location = /favicon.ico { access_log off; log_not_found off; }
+# Don't log when robots or favicon is accessed or 404'd
+location = /robots.txt  { access_log off; log_not_found off; }
+location = /favicon.ico { access_log off; log_not_found off; }
 
-	# Prevents dotfiles from being served
-	location ~ /\.          { access_log off; log_not_found off; deny all; }
+# Prevents dotfiles from being served
+location ~ /\.          { access_log off; log_not_found off; deny all; }
 
+# Disable execution of PHP from uploads folder
+location ~* /content/uploads/.*\.php$ {
+	return 403;
+}
 
-	# Disable execution of PHP from uploads folder
-	location ~* /content/uploads/.*\.php$ {
-		return 403;
-	}
-
-	# Disable any public access to TimThumb cache
-	location ~*  ^(?:/content/themes/<%= app_theme %>)?/img/timthumb/cache/.*$ {
-		return 403;
-	}
+# Disable any public access to TimThumb cache
+location ~*  ^(?:/content/themes/<%= app_theme %>)?/img/timthumb/cache/.*$ {
+	return 403;
+}

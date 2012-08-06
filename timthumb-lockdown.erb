@@ -1,10 +1,10 @@
-          # TimThumb internal security lockdown
-          location ~* ^(?:/content/themes/<%= app_theme %>)?/img/timthumb/timthumb(?:-config)?.php {
-                  # prevent direct querying of timthumb.php
-                  internal; 
-                  try_files $uri =404;
-                  location ~ \..*/.*\.php$ {
-                          return 404;
-                  }
-                  fastcgi_pass unix:/var/run/php5-fpm-pools-<%= app_name %>.sock;
-          }
+# TimThumb internal security lockdown
+location ~* ^(?:/content/themes/<%= app_theme %>)?/img/timthumb/timthumb(?:-config)?.php {
+	# prevent direct querying of timthumb.php
+	internal;
+	try_files $uri =404;
+	location ~ \..*/.*\.php$ {
+		return 404;
+	}
+	fastcgi_pass unix:/var/run/php5-fpm-pools-<%= app_name %>.sock;
+}
