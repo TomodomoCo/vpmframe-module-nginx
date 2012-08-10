@@ -1,2 +1,2 @@
 # redirect /content/uploads to static.
-rewrite  ^/?:(wp-)?content/uploads/.*$ http://static.<%= app_domain %>/content/uploads/$1 permanent;
+rewrite  ^/content/uploads/(.*)$ http://static.<%= site_domain %>/content/uploads/$1 permanent;
